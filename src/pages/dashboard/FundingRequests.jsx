@@ -5,7 +5,7 @@ import project1 from '../../assets/project1.svg';
 import project2 from '../../assets/project2.svg';
 import project3 from '../../assets/project3.svg';
 import vector from '../../assets/vector.svg';
-import SubmitBanner from "../../components/SubmitBanner";
+import Banner from "../../components/Banner";
 
 const FundingRequests = () => {
 
@@ -13,7 +13,7 @@ const FundingRequests = () => {
 
     return (
         <main className="bg-[#02080B] ">
-            <SubmitBanner />
+            <Banner />
             <section className="bg-[#02080B]  bg-no-repeat"
                 style={{
                     backgroundImage: `url(${vector})`,

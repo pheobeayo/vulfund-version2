@@ -1,4 +1,4 @@
-import SubmitBanner from "../../components/SubmitBanner";
+import Banner from "../../components/Banner";
 
 
 const Register = () => {
@@ -6,7 +6,7 @@ const Register = () => {
 
     return (
         <main className="bg-[#02080B]">
-            <SubmitBanner/>
+            <Banner/>
             <div className="grid place-items-center bg-[#02080B]">
                 <div className="w-1/2 p-8 rounded-lg text-[#110A03] flex flex-col items-center bg-[#02080B] lg:w-[50%] md:w-[50%]  mx-auto">
                     <h1 className="text-[30px] lg-[36px] md-[36px] font-montserrat text-white font-bold mt-16  my-10">
