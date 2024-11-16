@@ -21,7 +21,9 @@ const DashboardLayout = lazy(() =>
 const AllDonations = lazy(() =>
   import("../pages/dashboard/AllDonations")
 );
-
+const Analytics = lazy(() =>
+  import("../pages/dashboard/Analytics")
+);
 
 
 const router = createBrowserRouter(createRoutesFromElements(
@@ -38,6 +40,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="treasury-donation" element={<TreasuryDonation />} />
       <Route path="funding-requests" element={<FundingRequests />} />
       <Route path="all-donations" element={<AllDonations />} />
+      <Route path="analytics" element={<Analytics />} />
     </Route>
 
   </Route>
