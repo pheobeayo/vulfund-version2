@@ -4,10 +4,10 @@ import { GiReceiveMoney } from "react-icons/gi";
 import { CiLogout } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 import logo from '../assets/logo.svg';
-
+import { useDisconnect } from "@web3modal/ethers/react";
 
 const Sidebar = () => {
-
+const { disconnect } = useDisconnect();
 
   const activeStyle = {
     borderLeft: '1px solid #A3FFCE',
@@ -23,7 +23,7 @@ const Sidebar = () => {
       <NavLink to="register" className="text-[14px] text-[#FFFEFB]  flex items-center py-4 mb-4 px-6  hover:text-[#A3FFCE]" style={({ isActive }) => isActive ? activeStyle : null}><MdCreateNewFolder className="mr-4" />Register</NavLink>
       <NavLink to="funding-requests" className="text-[14px] text-[#FFFEFB]  flex items-center py-4 mb-4 px-6  hover:text-[#A3FFCE]" style={({ isActive }) => isActive ? activeStyle : null}><GiReceiveMoney className="mr-4" /> Funding Requests</NavLink>
       <NavLink to="all-donations" className="text-[14px] text-[#FFFEFB]  flex items-center py-4 mb-4 px-6  hover:text-[#A3FFCE]" style={({ isActive }) => isActive ? activeStyle : null}><GiReceiveMoney className="mr-4" /> All Donations</NavLink>
-      <button className="text-[14px] text-[#FFFEFB]  flex items-center py-4 mb-4 px-6  hover:text-[#A3FFCE]" ><CiLogout className="mr-4" /> Log out</button>
+      <button className="text-[14px] text-[#FFFEFB]  flex items-center py-4 mb-4 px-6  hover:text-[#A3FFCE]" onClick={() => disconnect()}><CiLogout className="mr-4" /> Log out</button>
 
     </div>
   );
