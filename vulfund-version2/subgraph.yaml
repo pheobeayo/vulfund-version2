@@ -39,3 +39,32 @@ dataSources:
         - event: Voted(indexed uint256,indexed address)
           handler: handleVoted
       file: ./src/vulfund-v-2.ts
+  - kind: ethereum
+    name: VulfundNFT
+    network: base-sepolia
+    source:
+      address: "0x799A21ee3C1264e31382E50B95191f6A8A82868d"
+      abi: VulfundNFT
+      startBlock: 17987657
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: VulfundNFT
+          file: ./abis/VulfundNFT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/vulfund-nft.ts

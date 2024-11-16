@@ -48,7 +48,7 @@ export function handleProposalCreated(event: ProposalCreatedEvent): void {
   )
   entity.proposalId = event.params.proposalId
   entity.beneficiary = event.params.beneficiary
-  entity.description = event.params.description
+  entity.description = event.params.description.toString()
   entity.recipientAddrss = event.params.recipientAddrss
   entity.amount = event.params.amount
 
