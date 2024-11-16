@@ -38,11 +38,15 @@ const Banner = () => {
   const handleSubmitClose = () => setOpenSubmit(false);
   const [donateAmount, setDonateAmount] = useState();
   const errorDecoder = ErrorDecoder.create([abi])
+  const [userAddress, setUserAddress] = useState(null);
+  const [requestTopic, setRequestTopic] = useState("");
+  const [description, setDescription] = useState("");
+  const [amount, setAmount] = useState(0);
 
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
 
-  async function handleDirectFund() {
+  async function handleDonate() {
     if (!isSupportedChain(chainId)) return console.error("Wrong network");
     const readWriteProvider = getProvider(walletProvider);
     const signer = await readWriteProvider.getSigner();
@@ -73,6 +77,48 @@ const Banner = () => {
       });
     } finally {
       setDonateAmount("");
+      setOpen(false)
+    }
+  }
+
+  async function handleRequest() {
+    if (!isSupportedChain(chainId)) return console.error("Wrong network");
+    const readWriteProvider = getProvider(walletProvider);
+    const signer = await readWriteProvider.getSigner();
+    const contract = getVulfundContract(signer);
+
+    try {
+      const amountVal = ethers.parseUnits(amount, 18);
+
+      const transaction = await contract.createProposal(
+        requestTopic,
+        description,
+        userAddress,
+        amountVal
+      );
+      console.log(transaction)
+      const receipt = await transaction.wait();
+
+      if (receipt.status) {
+        return toast.success("Request Creation Successful!", {
+          position: "top-center",
+        });
+      }
+
+      toast.error("Request Creation Failed", {
+        position: "top-center",
+      });
+    }catch (err) {
+        const decodedError = await errorDecoder.decode(err)
+        toast.error(`Request creation failed! - ${decodedError.reason}`, {
+          position: "top-center",
+        });
+    } finally {
+      setAmount("")
+      setDescription("")
+      setRequestTopic("")
+      setUserAddress("")
+      setOpenSubmit(false)
     }
   }
 
@@ -117,7 +163,7 @@ const Banner = () => {
                 placeholder="Enter amount"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
-              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4" onClick={handleDirectFund}>
+              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4" onClick={handleDonate}>
                 {" "}
                 Donate
               </button>
@@ -153,25 +199,33 @@ const Banner = () => {
             <Box sx={style}>
               <input
                 type="text"
+                value={requestTopic}
+                onChange={(e) => setRequestTopic(e.target.value)}
                 placeholder="Enter request title"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none "
               />
               <input
                 type="text"
+                value={amount}
+                onChange={(e) => setAmount(e.target.value)}
                 placeholder="Enter the amount of funding required"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none "
               />
               <input
                 type="text"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
                 placeholder="Describe the funding request"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
               <input
                 type="text"
+                value={userAddress}
+                onChange={(e) => setUserAddress(e.target.value)}
                 placeholder="Enter your wallet address"
                 className="text-white rounded-lg w-[100%] p-4 bg-transparent border border-white backdrop-blur-lg mb-4 outline-none"
               />
-              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4">
+              <button className="bg-gradient-to-r from-[#6AFEB0]  to-[#5CE3FB]  hover:bg-[#5CE3FB] text-[#111012] py-2 px-4 rounded-lg lg:text-[20px] md:text-[20px] font-bold text-[16px] w-[100%] my-4" onClick={handleRequest}>
                 {" "}
                 Submit
               </button>
