@@ -31,7 +31,7 @@ const router = createBrowserRouter(createRoutesFromElements(
   <Route>
     <Route path="/" element={<HomeLayout />} >
       <Route index element={<Home />} />
-      <Route path="/projectdetail" element={<ProjectDetail />} />
+      {/* <Route path="/projectdetail" element={<ProjectDetail />} /> */}
 
     </Route>
     <Route path="/dashboard" element={<DashboardLayout />}>
@@ -39,6 +39,7 @@ const router = createBrowserRouter(createRoutesFromElements(
       <Route path="register" element={<Register />} />
       <Route path="treasury-donation" element={<TreasuryDonation />} />
       <Route path="funding-requests" element={<FundingRequests />} />
+      <Route path="funding-requests/:id" element={<ProjectDetail />} />
       <Route path="all-donations" element={<AllDonations />} />
       <Route path="analytics" element={<Analytics />} />
     </Route>
