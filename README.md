@@ -34,7 +34,7 @@ VulfundV2 deployed at: 0x4f58C0e9CBDcf5D7Ec3471987AA28D6beE12ebe9
 
 ```
 
-Tools: Solidity, Bash, Foundry, Base sepolia,
+•   Tools: Solidity, Bash, Foundry, Base sepolia,
 
 •	Frontend Framework: React, Tailwind CSS, Apollo Client, Graph, Ethers, Web3modal, Foundry, Vite
 
@@ -51,8 +51,18 @@ https://github.com/pheobeayo/vulfund-version2
 ```bash
 vulfund-version2.vercel.app
 ```
-`Demo Video: Will be provided`
-`Pitch Deck: https://www.canva.com/design/DAGR7GYNcJs/xObZX-i862LrdQ0NukQSOg/view?utm_content=DAGR7GYNcJs&utm_campaign=designshare&utm_medium=link&utm_source=editor `
+### Demo Video: 
+```bash
+
+Will be provided
+
+```
+### Pitch Deck: 
+```bash 
+
+https://www.canva.com/design/DAGR7GYNcJs/xObZX-i862LrdQ0NukQSOg/view?utm_content=DAGR7GYNcJs&utm_campaign=designshare&utm_medium=link&utm_source=editor 
+
+```
 
 
 ### Team:
