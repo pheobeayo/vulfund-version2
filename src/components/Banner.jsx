@@ -147,7 +147,7 @@ const Banner = () => {
             className="bg-transparent rounded-lg p-4 text-white border border-gradient-to-r from-[#6AFEB0] to-[#5CE3FB] mr-4 lg:text-[20px] md:text-[20px] text-[18px]"
             onClick={handleOpenSubmit}
           >
-            Register for Funding
+            Request for Funding
           </button>
           <Modal
             open={open}
