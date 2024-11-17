@@ -54,7 +54,7 @@ vulfund-version2.vercel.app
 ### Demo Video: 
 ```bash
 
-Will be provided
+https://www.youtube.com/watch?v=XPHgL_jPNzI
 
 ```
 ### Pitch Deck: 
