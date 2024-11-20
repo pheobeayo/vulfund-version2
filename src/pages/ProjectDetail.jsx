@@ -1,4 +1,3 @@
-import project1 from "../assets/project1.svg";
 import { FaLongArrowAltDown } from "react-icons/fa";
 import vector from "../assets/vector.svg";
 import { useParams } from "react-router-dom";
@@ -46,7 +45,7 @@ const ProjectDetail = () => {
   console.log(details)
 
   return (
-    <main className="w-screen">
+    <main className="bg-[#02080B] w-[85vw]">
       <div
         className="bg-[#02080B]  bg-no-repeat w-[100%] md:w-[100%] lg:w-[100%]"
         style={{
@@ -55,10 +54,10 @@ const ProjectDetail = () => {
           backgroundPosition: "left top",
         }}
       >
-        <div className="flex justify-between flex-col lg:flex-row md:flex-row items-center px-8 lg:px-40 md:px-40 h-[130vh]">
+        <div className="flex justify-between flex-col lg:flex-row md:flex-row items-center px-8 lg:px-40 md:px-40 h-[110vh]">
           <div className="lg:w-[45%] md:w-[45%] w-[100%] h-full  mx-auto text-center lg:px-0 md:px-0 ">
             <img src="https://images.pexels.com/photos/5324986/pexels-photo-5324986.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" className="rounded-xl w-full" />
-            <div className="border border-white p-4">
+            <div className="border border-white p-4 rounded-lg mt-2">
               <h1 className="lg:text-[20px] md:text-[20px] text-[15px] font-serif text-left mt-2 my-4 text-white">
                {details.proposalTopic}
               </h1>

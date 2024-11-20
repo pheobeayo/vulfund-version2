@@ -82,13 +82,13 @@ const TreasuryDonation = () => {
                             alt="projectphoto"
                             className="w-[100%] h-[237px] object-cover object-center rounded-lg"
                           />
-                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] ">
+                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white ">
                             {item.proposalTopic}
                           </h3>
                           <p className="text-white text-justify">
                             {item.description.slice(0, 40)}...
                           </p>
-                          <p className="flex justify-between">
+                          <p className="flex justify-between text-white">
                             Amount needed <span>Amount Raised</span>
                           </p>
                           <p className="flex justify-between text-[#5BDEF3]">

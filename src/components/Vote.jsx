@@ -1,12 +1,11 @@
 import React from "react";
-import { useState } from "react";
 import { getVulfundContract } from "../constants/contract";
 import { getProvider } from "../constants/providers";
 import {
   useWeb3ModalAccount,
   useWeb3ModalProvider,
 } from "@web3modal/ethers/react";
-import { ethers, parseUnits } from "ethers";
+
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { isSupportedChain } from "../connection";

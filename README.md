@@ -29,7 +29,7 @@ Vulfund addresses these issues by:
 
 ```bash
 
-VulfundNFT deployed at: 0x799A21ee3C1264e31382E50B95191f6A8A82868d
+VulfundNFT deployed at: https://sepolia.basescan.org/address/0x4f58C0e9CBDcf5D7Ec3471987AA28D6beE12ebe9#code
 VulfundV2 deployed at: 0x4f58C0e9CBDcf5D7Ec3471987AA28D6beE12ebe9
 
 ```

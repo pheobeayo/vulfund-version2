@@ -16,7 +16,7 @@ const FundingRequests = () => {
                             <h3 className='font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] '>Bright Future Skill Academy</h3>
                             <p className='text-white text-justify'>Funds to offer vocational training for disadvantaged youths. </p>
                             <p className='flex justify-between'>Amount needed <span>Amount Raised</span></p>
-                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 USDT <span> 1,500 USDT</span></p>
+                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 ETH <span> 1,500 ETH</span></p>
                             <button className='bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg'>View  details</button>
                         </Link>
                     </div>
@@ -27,7 +27,7 @@ const FundingRequests = () => {
                             <h3 className='font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] '>Grace Senior Citizen Home</h3>
                             <p className='text-white text-justify'> Financial support for medical supplies and monthly health checkups for elderly residents.</p>
                             <p className='flex justify-between'>Amount needed <span>Amount Raised</span></p>
-                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 USDT <span> 1,500 USDT</span></p>
+                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 ETH <span> 1,500 ETH</span></p>
                             <button className='bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg'>View  details</button>
                         </Link>
                     </div>
@@ -37,7 +37,7 @@ const FundingRequests = () => {
                             <h3 className='font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] '>Sunshine Orphanage</h3>
                             <p className='text-white text-justify'> Funding to provide school supplies and uniforms for 50 orphaned children.</p>
                             <p className='flex justify-between'>Amount needed <span>Amount Raised</span></p>
-                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 USDT <span> 1,500 USDT</span></p>
+                            <p className='flex justify-between text-[#5BDEF3]'> 1,500 ETH <span> 1,500 ETH</span></p>
                             <button className='bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg'>View  details</button>
                         </Link>
                     </div>

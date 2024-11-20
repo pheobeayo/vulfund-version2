@@ -1,8 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import project1 from "../../assets/project1.svg";
-import project2 from "../../assets/project2.svg";
-import project3 from "../../assets/project3.svg";
 import vector from "../../assets/vector.svg";
 import Banner from "../../components/Banner";
 import Box from "@mui/material/Box";
@@ -155,13 +151,13 @@ const FundingRequests = () => {
                               alt="projectphoto"
                               className="w-[100%] h-[237px] object-cover object-center rounded-lg"
                             />
-                            <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] ">
+                            <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white ">
                               {allOrganization[2]}
                             </h3>
-                            <p className="text-white text-justify">
+                            <p className="text-white text-justify ">
                               {item.description.slice(0, 40)}...
                             </p>
-                            <p className="flex justify-between">
+                            <p className="flex justify-between text-white">
                               Amount needed <span>Amount Raised</span>
                             </p>
                             <p className="flex justify-between text-[#5BDEF3]">
