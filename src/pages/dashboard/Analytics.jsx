@@ -15,21 +15,24 @@ const Analytics = () => {
                     backgroundPosition: "left top",
                 }}>
 
-                <div className='lg:w-[95%] md:w-[95%] w-[100%] mx-auto py-12 px-4 lg:px-0 md:px-0 text-white'>
+                <div className='lg:w-[95%] md:w-[95%] w-[100%] mx-auto py-12 px-4 lg:px-0 md:px-0 bg-white mt-4'>
 
-                    <BarChart color='white'
-                        series={[
-                            { data: [35, 44, 34] },
-                            { data: [51, 6, 30] },
-                            { data: [15, 25, 50] },
-                            { data: [60, 50, 25] },
-                        ]}
-                        height={290}
-                        xAxis={[{ data: ['Requests ', 'Donations', 'Funded Requests'], scaleType: 'band' }]}
-                        margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
-                        yAxis={[{color:'white'}]}
-                       
-                    />
+                <BarChart
+      xAxis={[
+        {
+          id: 'barCategories',
+          data: ['Requests', 'Donations', 'Funded Requests'],
+          scaleType: 'band',
+        },
+      ]}
+      series={[
+        {
+          data: [2, 5, 3],
+        },
+      ]}
+      width={500}
+      height={300}
+    />
                 </div>
             </section>
         </main>
