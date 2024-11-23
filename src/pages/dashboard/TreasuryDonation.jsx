@@ -12,13 +12,22 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import useGetProposals from "../../Hooks/useGetProposals";
 import { formatUnits } from "ethers";
+import useGetAllOrganization from "../../Hooks/useGetAllOrganization";
 
 const TreasuryDonation = () => {
   const [value, setValue] = useState("one");
   const allProposals = useGetProposals();
+  const organization = useGetAllOrganization();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const convertIpfsUrl = (url) => {
+    if (url && url.startsWith("ipfs://")) {
+      return url.replace("ipfs://", "https://ipfs.io/ipfs/");
+    }
+    return url || "";
   };
 
   return (
@@ -70,42 +79,44 @@ const TreasuryDonation = () => {
                   </span>{" "}
                 </h2>
                 <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
-                  {allProposals.length > 0 ? (
-                    allProposals.map((item, index) => (
-                      <div
-                        key={index}
-                        className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white bg-[#191F1C]/5 rounded-xl border shadow-lg"
-                      >
-                       <Link to={`funding-requests/${index}`} className="text-white">
-                            <img
-                            src="https://images.pexels.com/photos/5324986/pexels-photo-5324986.jpeg?auto=compress&cs=tinysrgb&w=800"
-                            alt="projectphoto"
-                            className="w-[100%] h-[237px] object-cover object-center rounded-lg"
-                          />
-                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white ">
+                    {allProposals.length > 0 ? (
+                      allProposals.map((item) => (
+                        <div key={item.proposalid} className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
+                          {organization.map(
+                            (info) =>
+                              item.beneficiary === info[0] && (
+                                  <img
+                                    src={convertIpfsUrl(info[1])}
+                                    alt="projectphoto"
+                                    className="w-[100%] h-[237px] object-cover object-center rounded-lg"
+                                  />
+                              )
+                          )}
+                          <h3 className="font-bold mt-4 lg:text-[20px] md:text-[20px] text-[18px] text-white">
                             {item.proposalTopic}
                           </h3>
-                          <p className="text-white text-justify">
+                          <p className="text-white text-justify truncate">
                             {item.description.slice(0, 40)}...
                           </p>
                           <p className="flex justify-between text-white">
-                            Amount needed <span>Amount Raised</span>
+                            Amount needed <span>Balance left</span>
                           </p>
                           <p className="flex justify-between text-[#5BDEF3]">
                             {formatUnits(item.amount)} ETH
-                            <span>{Number(item.balance)}ETH</span>
+                            <span>{formatUnits(item.balance)} ETH</span>
                           </p>
-                          <button className="bg-transparent my-4 border w-[100%] py-2 px-4 border-white text-white rounded-lg">
-                            View details
-                          </button>
-                        </Link>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No projects available.</p>
-                  )}
+                          <Link to={`funding-requests/${item.proposalid}`}>
+                            <button className="bg-transparent my-4 border w-full py-2 px-4 border-white text-white rounded-lg">
+                              View details
+                            </button>
+                          </Link>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No projects available.</p>
+                    )}
+                  </div>
                 </div>
-              </div>
             </TabPanel>
             <TabPanel value="two">
               <div className="lg:w-[100%] md:w-[100%] w-[100%] mx-auto py-12 px-4 lg:px-0 md:px-0">
@@ -118,7 +129,7 @@ const TreasuryDonation = () => {
                 </h2>
                 <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project1}
                         alt=""
@@ -144,7 +155,7 @@ const TreasuryDonation = () => {
                     </Link>
                   </div>
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white  bg-[#191F1C]/5 border rounded-xl shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project2}
                         alt=""
@@ -171,7 +182,7 @@ const TreasuryDonation = () => {
                     </Link>
                   </div>
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border border-white bg-[#191F1C]/5  rounded-xl  shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project3}
                         alt=""
@@ -211,7 +222,7 @@ const TreasuryDonation = () => {
                 </h2>
                 <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project1}
                         alt=""
@@ -238,7 +249,7 @@ const TreasuryDonation = () => {
                   </div>
 
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white  bg-[#191F1C]/5 border rounded-xl shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project2}
                         alt=""
@@ -265,7 +276,7 @@ const TreasuryDonation = () => {
                     </Link>
                   </div>
                   <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border border-white bg-[#191F1C]/5  rounded-xl  shadow-lg">
-                    <Link to='' className="text-white">
+                    <Link to="" className="text-white">
                       <img
                         src={project3}
                         alt=""
@@ -300,7 +311,7 @@ const TreasuryDonation = () => {
               </h2>
               <div className="flex lg:flex-row md:flex-row flex-col justify-between items-center my-10 flex-wrap">
                 <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white bg-[#191F1C]/5 rounded-xl border shadow-lg">
-                  <Link to='' className="text-white">
+                  <Link to="" className="text-white">
                     <img
                       src={project1}
                       alt=""
@@ -327,7 +338,7 @@ const TreasuryDonation = () => {
                 </div>
 
                 <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4  border-white  bg-[#191F1C]/5 border rounded-xl shadow-lg">
-                  <Link to='' className="text-white">
+                  <Link to="" className="text-white">
                     <img
                       src={project2}
                       alt=""
@@ -354,7 +365,7 @@ const TreasuryDonation = () => {
                   </Link>
                 </div>
                 <div className="lg:w-[32%] md:w-[32%] w-[100%] p-4 border border-white bg-[#191F1C]/5  rounded-xl  shadow-lg">
-                  <Link to='' className="text-white">
+                  <Link to="" className="text-white">
                     <img
                       src={project3}
                       alt=""

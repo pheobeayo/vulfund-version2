@@ -5,14 +5,15 @@ import { getVulfundContract } from "../constants/contract";
 import { useWeb3ModalAccount } from "@web3modal/ethers/react";
 import { formatUnits, ethers } from "ethers";
 
-const useGetProposals = () => {
-  const [allProposals, setAllProposals] = useState([]); 
+const useGetUserProposal = () => {
+  const [userProposals, setUserProposals] = useState([]); 
   const [count, setCount] = useState(0);
+  const { address } = useWeb3ModalAccount()
 
-  const fetchAllProposals = useCallback(async () => {
+  const fetchAllUserProposals = useCallback(async () => {
     try {
         const contract = getVulfundContract(readOnlyProvider);
-        const res = await contract. getAllProposal();
+        const res = await contract. getUserProposals(address);
         const converted = res?.map((item, index)=>{
             return{
               beneficiary: item[0],
@@ -25,7 +26,7 @@ const useGetProposals = () => {
               votes: item[7]  
           }      
         }) 
-        setAllProposals(converted)
+        setUserProposals(converted)
     } catch (error) {
         console.error(error);
     }
@@ -33,12 +34,12 @@ const useGetProposals = () => {
 
 const trackingProposals = useCallback(() => {
     setCount((prevValue) => prevValue + 1);
-    fetchAllProposals();
-}, [fetchAllProposals]);
+    fetchAllUserProposals();
+}, [fetchAllUserProposals]);
 
 
 useEffect(() => {
-    fetchAllProposals();
+    fetchAllUserProposals();
 
     const filter = {
         address: import.meta.env.VITE_CONTRACT_ADDRESS,
@@ -59,9 +60,9 @@ useEffect(() => {
         provider.off(filter, trackingProposals);
     };
 
-}, [fetchAllProposals, trackingProposals, count]);
+}, [fetchAllUserProposals, trackingProposals, count]);
 
-return allProposals;
+return userProposals;
 };
 
-export default useGetProposals;
+export default useGetUserProposal;

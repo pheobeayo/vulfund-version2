@@ -54,7 +54,7 @@ const Banner = () => {
     const contract = getVulfundContract(signer);
 
     try {
-      const amountVal = ethers.parseUnits(donateAmount, 18);
+      const amountVal = ethers.parseEther(donateAmount);
       const transaction = await contract.donate({
         value: amountVal,
       });
@@ -96,7 +96,6 @@ const Banner = () => {
         userAddress,
         amountVal
       );
-      console.log(transaction)
       const receipt = await transaction.wait();
 
       if (receipt.status) {

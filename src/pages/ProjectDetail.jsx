@@ -9,11 +9,15 @@ import {
   useWeb3ModalAccount,
   useWeb3ModalProvider,
 } from "@web3modal/ethers/react";
+import { formatUnits } from "ethers";
 import Vote from "../components/Vote";
+import useGetAllOrganization from "../Hooks/useGetAllOrganization";
+import DirectFund from "../components/DirectFund";
 
 const ProjectDetail = () => {
   const { id } = useParams();
   const [details, setDetails] = useState([]);
+  const organization = useGetAllOrganization();
 
   const { chainId } = useWeb3ModalAccount();
   const { walletProvider } = useWeb3ModalProvider();
@@ -36,11 +40,17 @@ const ProjectDetail = () => {
     handleFetchDetails();
   }, [id]);
 
-
   const convertToWholeNumber = (formattedNumber) => {
     const number = parseFloat(formattedNumber);
     if (isNaN(number)) return "0";
     return Math.floor(number);
+  };
+
+  const convertIpfsUrl = (url) => {
+    if (url && url.startsWith("ipfs://")) {
+      return url.replace("ipfs://", "https://ipfs.io/ipfs/");
+    }
+    return url || "";
   };
   console.log(details)
 
@@ -56,15 +66,29 @@ const ProjectDetail = () => {
       >
         <div className="flex justify-between flex-col lg:flex-row md:flex-row items-center px-8 lg:px-40 md:px-40 h-[110vh]">
           <div className="lg:w-[45%] md:w-[45%] w-[100%] h-full  mx-auto text-center lg:px-0 md:px-0 ">
-            <img src="https://images.pexels.com/photos/5324986/pexels-photo-5324986.jpeg?auto=compress&cs=tinysrgb&w=800" alt="" className="rounded-xl w-full" />
-            <div className="border border-white p-4 rounded-lg mt-2">
-              <h1 className="lg:text-[20px] md:text-[20px] text-[15px] font-serif text-left mt-2 my-4 text-white">
-               {details.proposalTopic}
-              </h1>
-            </div>
+            {organization.map(
+              (info) =>
+                details.beneficiary === info[0] && (
+                  <div>
+                    <img
+                      src={convertIpfsUrl(info[1])}
+                      alt="projectphoto"
+                      className="w-[100%] h-[237px] object-cover object-center rounded-lg"
+                    />
+                    <div className="border border-white p-4 rounded-lg mt-2">
+                      <h1 className="lg:text-[20px] md:text-[20px] text-[15px] font-serif text-left mt-2 my-4 text-white">
+                        {info[2]}
+                      </h1>
+                    </div>
+                  </div>
+                )
+            )}
             <h1 className="lg:text-[20px] md:text-[20px] text-[15px] font-serif text-left mt-2 my-4 text-white">
               More Information
             </h1>
+            <h2 className="lg:text-[18px] md:text-[18px] text-[15px] font-serif text-left mt-2 my-4 text-white font-[400]">
+              {details.proposalTopic}
+            </h2>
             <p className="lg:text-[15px] md:text-[15px] text-[12px] text-justify text-white ">
               {details.description}
             </p>
@@ -80,19 +104,20 @@ const ProjectDetail = () => {
               <h2 className="lg:px-0 md:px-0 lg:text-base md:text-base text-sm font-[500] my-6 flex justify-between flex-col lg:flex-row md:flex-row  w-[90%] mx-auto font-serif items-center text-center lg:text-left md:text-left text-[#D3D0C7] dark:text-[#D3D0C7]">
                 Amount needed{" "}
                 <span className="lg:base md:base text-sm font-[500] text-[#D3D0C7] ">
-                  Amount Raised
+                  Balance left
                 </span>
               </h2>
               <h2 className="lg:px-0 md:px-0 lg:text-base md:text-base text-sm font-[500] my-6 flex justify-between flex-col lg:flex-row md:flex-row  w-[90%] mx-auto font-serif items-center text-center lg:text-left md:text-left text-[#5BDEF3] dark:text-[#5BDEF3]">
-              {convertToWholeNumber(details.amount) / 1e18 }ETH
+              {Number(details.amount) / 1e18} ETH
                 <span className="lg:base md:base text-sm font-[500] ">
                   {" "}
-                  {Number(details.balance)}ETH
+                  {Number(details.balance) / 1e18 }ETH
                 </span>
               </h2>
               <h2 className="lg:px-0 md:px-0 lg:text-base md:text-base text-sm font-[400] my-6 flex justify-between flex-col lg:flex-row md:flex-row  mx-auto font-serif items-center text-center lg:text-left md:text-left text-[#D3D0C7] dark:text-[#D3D0C7]">
                 This Project has been pushed for dao funding request
               </h2>
+              <DirectFund id={id} />
             </div>
             <div className="bg-[#0A1F28] rounded-xl p-4 ">
               <h1 className="lg:text-[24px] md:text-[24px] text-[20px] font-serif text-white font-bold mt-4 my-4">

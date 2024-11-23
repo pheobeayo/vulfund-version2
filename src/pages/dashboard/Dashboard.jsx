@@ -1,20 +1,20 @@
-import Banner from "../../components/Banner";
-import FundingRequests from "../../components/FundingRequests";
+// import Banner from "../../components/Banner";
+// import FundingRequests from "../../components/FundingRequests";
 
 
 
 
-const Dashboard = () => {
+// const Dashboard = () => {
 
-    return (
+//     return (
 
-        <main className="bg-[#02080B]">
-          <Banner/>  
-          <FundingRequests/>
+//         <main className="bg-[#02080B]">
+//           <Banner/>  
+//           <FundingRequests/>
            
-        </main>
+//         </main>
 
-    );
-};
+//     );
+// };
 
-export default Dashboard;
+// export default Dashboard;
