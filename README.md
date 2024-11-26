@@ -50,7 +50,7 @@ https://github.com/pheobeayo/vulfund-version2
 ```
 ### MVP Deployment: 
 ```bash
-vulfund-version2.vercel.app
+https://vulfund-version2.vercel.app/
 ```
 ### Demo Video: 
 ```bash
