@@ -3994,9 +3994,9 @@ mz@^2.7.0:
     thenify-all "^1.0.0"
 
 nanoid@^3.3.7:
-  version "3.3.7"
-  resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.3.7.tgz"
-  integrity sha512-eSRppjcPIatRIMC1U6UngP8XFcz8MQWGQdt1MTBQ7NaAmvXDfvNxbvWV3x2y6CdEUciCSsDHDQZbhYaB8QEo2g==
+  version "3.3.8"
+  resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.3.8.tgz#b1be3030bee36aaff18bacb375e5cce521684baf"
+  integrity sha512-WNLf5Sd8oZxOm+TzppcYk8gVOgP+l58xNy58D0nbUnOxOWRWvlcCV4kUF7ltmI6PsrLl/BgKEyS4mqsGChFN0w==
 
 napi-wasm@^1.1.0:
   version "1.1.3"
@@ -5333,7 +5333,7 @@ vite@^5.4.8:
     react-loader-spinner "^6.1.6"
     react-router-dom "^6.26.2"
     react-toastify "^10.0.5"
-    vulfund "file:../../../AppData/Local/Yarn/Cache/v6/npm-vulfund-0.0.0-9ee80ef2-c85d-4c69-bd04-eb151faf3e01-1731854120572/node_modules/vulfund"
+    vulfund "file:."
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
