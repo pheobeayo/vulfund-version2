@@ -5299,10 +5299,10 @@ valtio@1.11.2:
     proxy-compare "2.5.1"
     use-sync-external-store "1.2.0"
 
-vite@^5.4.8:
-  version "5.4.8"
-  resolved "https://registry.npmjs.org/vite/-/vite-5.4.8.tgz"
-  integrity sha512-FqrItQ4DT1NC4zCUqMB4c4AZORMKIa0m8/URVCZ77OZ/QSNeJ54bU1vrFADbDsuwfIPcgknRkmqakQcgnL4GiQ==
+vite@^5.4.14:
+  version "5.4.14"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-5.4.14.tgz#ff8255edb02134df180dcfca1916c37a6abe8408"
+  integrity sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==
   dependencies:
     esbuild "^0.21.3"
     postcss "^8.4.43"
@@ -5333,7 +5333,7 @@ vite@^5.4.8:
     react-loader-spinner "^6.1.6"
     react-router-dom "^6.26.2"
     react-toastify "^10.0.5"
-    vulfund "file:../../../AppData/Local/Yarn/Cache/v6/npm-vulfund-0.0.0-9ee80ef2-c85d-4c69-bd04-eb151faf3e01-1731854120572/node_modules/vulfund"
+    vulfund "file:."
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
